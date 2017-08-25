@@ -31,7 +31,8 @@ public class EstiloDAO {
 
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, estilo.getNome());
-
+		statement.setInt(2, estilo.getCodigo());
+		
 		return statement.executeUpdate() > 0;
 	}
 

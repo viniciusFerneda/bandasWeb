@@ -17,10 +17,46 @@ import br.com.vinicius.banda.model.Pais;
 
 public class CantaDAO {
 
-	private final Connection con;
+	private final Connection conn;
 
 	public CantaDAO(Connection con) {
-		this.con = con;
+		this.conn = con;
+	}
+	
+	public boolean inserir(Canta canta) throws SQLException {
+		String sql = "INSERT INTO CANTA (CAN_CODIGO, CAN_ANO_GRAVACAO, CAN_BANDA, CAN_MUSICA, CAN_GRAVADORA, CAN_ESTILO) VALUES (SEQ_CANTA.nextval, ?, ?, ?, ?, ?)";
+
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, canta.getAnoGravacao());
+		statement.setInt(2, canta.getBanda().getCodigo());
+		statement.setInt(3, canta.getMusica().getCodigo());
+		statement.setInt(4, canta.getGravadora().getCodigo());
+		statement.setInt(5, canta.getEstilo().getCodigo());
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterar(Canta canta) throws SQLException {
+		String sql = "UPDATE CANTA SET CAN_ANO_GRAVACAO = ?, CAN_BANDA = ?, CAN_MUSICA = ?, CAN_GRAVADORA = ?, CAN_ESTILO = ? WHERE CAN_CODIGO = ?";
+
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, canta.getAnoGravacao());
+		statement.setInt(2, canta.getBanda().getCodigo());
+		statement.setInt(3, canta.getMusica().getCodigo());
+		statement.setInt(4, canta.getGravadora().getCodigo());
+		statement.setInt(5, canta.getEstilo().getCodigo());
+		statement.setInt(6, canta.getCodigo());
+		
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean excluir(Integer codigo) throws SQLException {
+		String sql = "DELETE CANTA WHERE CAN_CODIGO = ?";
+
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, codigo);
+
+		return statement.executeUpdate() > 0;
 	}
 
 	public List<Canta> lista() throws SQLException {
@@ -36,7 +72,7 @@ public class CantaDAO {
 		sql += " INNER JOIN PAIS PGR ON (GRA.GRA_PAIS = PGR.PAI_CODIGO) ";
 		sql += " INNER JOIN BANDA BAN ON (CAN.CAN_BANDA = BAN.BAN_CODIGO) ";
 		sql += " INNER JOIN PAIS PBA ON (BAN.BAN_PAIS = PBA.PAI_CODIGO) ";
-		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
@@ -98,7 +134,7 @@ public class CantaDAO {
 		sql += " INNER JOIN BANDA BAN ON (CAN.CAN_BANDA = BAN.BAN_CODIGO) ";
 		sql += " INNER JOIN PAIS PBA ON (BAN.BAN_PAIS = PBA.PAI_CODIGO) ";
 		sql += " WHERE BAN.BAN_NOME = ? ";
-		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, nomeBanda);
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
