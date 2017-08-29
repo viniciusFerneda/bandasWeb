@@ -4,33 +4,33 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import br.com.vinicius.banda.dao.MusicaDAO;
+import br.com.vinicius.banda.dao.GravadoraDAO;
 import br.com.vinicius.banda.jdbc.oracle.ConnectionPoolOracle;
-import br.com.vinicius.banda.model.Musica;
+import br.com.vinicius.banda.model.Gravadora;
 
-public class MusicaService {
+public class GravadoraService {
 
-	public void inserir(Musica musica) throws SQLException{
+	public void inserir(Gravadora gravadora) throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new MusicaDAO(con).inserir(musica);
+			new GravadoraDAO(con).inserir(gravadora);
 		}
 	}
 
-	public void alterar(Musica musica) throws SQLException{
+	public void alterar(Gravadora gravadora) throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new MusicaDAO(con).alterar(musica);
+			new GravadoraDAO(con).alterar(gravadora);
 		}
 	}
 	
 	public void excluir(Integer codigo) throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new MusicaDAO(con).excluir(codigo);
+			new GravadoraDAO(con).excluir(codigo);
 		}
 	}
 	
-	public List<Musica> listarMusicas() throws SQLException{
+	public List<Gravadora> listarGravadoras() throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-            return new MusicaDAO(con).lista();
+            return new GravadoraDAO(con).lista();
 		}
 	}
 	

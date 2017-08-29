@@ -10,6 +10,24 @@ import br.com.vinicius.banda.model.Banda;
 
 public class BandaService {
 
+	public void inserir(Banda banda) throws SQLException{
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new BandaDAO(con).inserir(banda);
+		}
+	}
+
+	public void alterar(Banda banda) throws SQLException{
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new BandaDAO(con).alterar(banda);
+		}
+	}
+	
+	public void excluir(Integer codigo) throws SQLException{
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new BandaDAO(con).excluir(codigo);
+		}
+	}
+	
 	public List<Banda> listarBandas() throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
             return new BandaDAO(con).lista();
