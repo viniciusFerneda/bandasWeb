@@ -1,5 +1,7 @@
 package br.com.vinicius.banda.model;
 
+import br.com.vinicius.banda.dto.PaisDTO;
+
 public class Pais {
 
 	private Integer codigo;
@@ -7,7 +9,7 @@ public class Pais {
 
 	public Pais() {
 	}
-	
+
 	public Pais(Integer codigo, String nome) {
 		this.codigo = codigo;
 		this.nome = nome;
@@ -27,6 +29,10 @@ public class Pais {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public PaisDTO toDTO() {
+		return new PaisDTO(this.codigo, this.nome);
 	}
 
 }

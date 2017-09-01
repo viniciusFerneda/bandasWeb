@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.vinicius.banda.dto.GravadoraDTO;
 import br.com.vinicius.banda.model.Gravadora;
 
 public class GravadoraDAO {
@@ -18,7 +19,7 @@ public class GravadoraDAO {
 	}
 	
 	public boolean inserir(Gravadora gravadora) throws SQLException {
-		String sql = "INSERT INTO GRAVADORA (GRA_CODIGO, GRA_NOME, GRA_PAIS) VALUES (SEQ_GRAVADORA.nextval, ?, ?)";
+		String sql = "INSERT INTO GRAVADORA (GRA_CODIGO, GRA_NOME, GRA_PAIS) VALUES (SEQ_GRAVADORA.NEXTVAL, ?, ?)";
 
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, gravadora.getNome());
@@ -47,24 +48,43 @@ public class GravadoraDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Gravadora> lista() throws SQLException {
-		List<Gravadora> paises = new ArrayList<>();
+	public List<GravadoraDTO> lista() throws SQLException {
+		List<GravadoraDTO> gravadoras = new ArrayList<>();
 
-		String sql = "select * from GRAVADORA";
+		String sql = "SELECT * FROM GRAVADORA";
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					int id = rs.getInt("gra_codigo");
-					String nome = rs.getString("gra_nome");
+					int id = rs.getInt("GRA_CODIGO");
+					String nome = rs.getString("GRA_NOME");
 					Gravadora gravadora = new Gravadora(id, nome, null);
-					paises.add(gravadora);
+					gravadoras.add(gravadora.toDTO());
 				}
 			}
 		}
 
-		return paises;
+		return gravadoras;
 
+	}
+
+	public GravadoraDTO buscarGravadoraPorCodigo(int codigo) throws SQLException {
+		GravadoraDTO gravadora = new GravadoraDTO();
+
+		String sql = "SELECT * FROM GRAVADORA WHERE GRA_CODIGO = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, codigo);
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("GRA_CODIGO");
+					String nome = rs.getString("GRA_NOME");
+					gravadora = new Gravadora(id, nome, null).toDTO();
+				}
+			}
+		}
+
+		return gravadora;
 	}
 	
 }

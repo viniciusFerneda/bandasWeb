@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.vinicius.banda.dao.GravadoraDAO;
+import br.com.vinicius.banda.dto.GravadoraDTO;
 import br.com.vinicius.banda.jdbc.oracle.ConnectionPoolOracle;
 import br.com.vinicius.banda.model.Gravadora;
 
@@ -28,9 +29,15 @@ public class GravadoraService {
 		}
 	}
 	
-	public List<Gravadora> listarGravadoras() throws SQLException{
+	public List<GravadoraDTO> listarGravadoras() throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
             return new GravadoraDAO(con).lista();
+		}
+	}
+
+	public GravadoraDTO buscarGravadoraPorCodigo(int codigo) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+            return new GravadoraDAO(con).buscarGravadoraPorCodigo(codigo);
 		}
 	}
 	

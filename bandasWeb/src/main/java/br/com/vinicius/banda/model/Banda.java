@@ -2,6 +2,8 @@ package br.com.vinicius.banda.model;
 
 import java.util.Date;
 
+import br.com.vinicius.banda.dto.BandaDTO;
+
 public class Banda {
 
 	private Integer codigo;
@@ -49,6 +51,10 @@ public class Banda {
 
 	public void setPais(Pais pais) {
 		this.pais = pais;
+	}
+	
+	public BandaDTO toDTO() {
+		return new BandaDTO(this.codigo, this.nome, this.dtCriacao, this.pais.getNome());
 	}
 
 }

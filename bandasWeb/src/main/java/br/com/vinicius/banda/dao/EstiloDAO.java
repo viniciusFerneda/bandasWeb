@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.vinicius.banda.dto.EstiloDTO;
 import br.com.vinicius.banda.model.Estilo;
 
 public class EstiloDAO {
@@ -18,7 +19,7 @@ public class EstiloDAO {
 	}
 	
 	public boolean inserir(Estilo estilo) throws SQLException {
-		String sql = "INSERT INTO ESTILO (EST_CODIGO, EST_NOME) VALUES (SEQ_ESTILO.nextval, ?)";
+		String sql = "INSERT INTO ESTILO (EST_CODIGO, EST_NOME) VALUES (SEQ_ESTILO.NEXTVAL, ?)";
 
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, estilo.getNome());
@@ -45,24 +46,43 @@ public class EstiloDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Estilo> lista() throws SQLException {
-		List<Estilo> estilos = new ArrayList<>();
+	public List<EstiloDTO> lista() throws SQLException {
+		List<EstiloDTO> estilos = new ArrayList<>();
 
-		String sql = "select * from ESTILO";
+		String sql = "SELECT * FROM ESTILO";
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					int id = rs.getInt("est_codigo");
-					String nome = rs.getString("est_nome");
+					int id = rs.getInt("EST_CODIGO");
+					String nome = rs.getString("EST_NOME");
 					Estilo estilo = new Estilo(id, nome);
-					estilos.add(estilo);
+					estilos.add(estilo.toDTO());
 				}
 			}
 		}
 
 		return estilos;
 
+	}
+
+	public EstiloDTO buscarEstiloPorCodigo(int codigo) throws SQLException {
+		EstiloDTO estilo = new EstiloDTO();
+
+		String sql = "SELECT * FROM ESTILO WHERE EST_CODIGO = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, codigo);
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("EST_CODIGO");
+					String nome = rs.getString("EST_NOME");
+					estilo = new Estilo(id, nome).toDTO();
+				}
+			}
+		}
+
+		return estilo;
 	}
 	
 }

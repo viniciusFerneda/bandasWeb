@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.vinicius.banda.dto.MusicaDTO;
 import br.com.vinicius.banda.model.Musica;
 
 public class MusicaDAO {
@@ -18,7 +19,7 @@ public class MusicaDAO {
 	}
 	
 	public boolean inserir(Musica musica) throws SQLException {
-		String sql = "INSERT INTO MUSICA (MUS_CODIGO, MUS_NOME, MUS_DURACAO) VALUES (SEQ_MUSICA.nextval, ?, ?)";
+		String sql = "INSERT INTO MUSICA (MUS_CODIGO, MUS_NOME, MUS_DURACAO) VALUES (SEQ_MUSICA.NEXTVAL, ?, ?)";
 
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, musica.getNome());
@@ -47,25 +48,45 @@ public class MusicaDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Musica> lista() throws SQLException {
-		List<Musica> paises = new ArrayList<>();
+	public List<MusicaDTO> lista() throws SQLException {
+		List<MusicaDTO> musicas = new ArrayList<>();
 
-		String sql = "select * from MUSICA";
+		String sql = "SELECT * FROM MUSICA";
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					int id = rs.getInt("mus_codigo");
-					String nome = rs.getString("mus_nome");
-					long duracao = rs.getLong("mus_duracao");
+					int id = rs.getInt("MUS_CODIGO");
+					String nome = rs.getString("MUS_NOME");
+					long duracao = rs.getLong("MUS_DURACAO");
 					Musica musica = new Musica(id, nome, duracao);
-					paises.add(musica);
+					musicas.add(musica.toDTO());
 				}
 			}
 		}
 
-		return paises;
+		return musicas;
 
+	}
+
+	public MusicaDTO buscarMusicaPorCodigo(int codigo) throws SQLException {
+		MusicaDTO musica = new MusicaDTO();
+
+		String sql = "SELECT * FROM MUSICA WHERE MUS_CODIGO = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, codigo);
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("MUS_CODIGO");
+					String nome = rs.getString("MUS_NOME");
+					long duracao = rs.getLong("MUS_DURACAO");
+					musica = new Musica(id, nome, duracao).toDTO();
+				}
+			}
+		}
+
+		return musica;
 	}
 	
 }

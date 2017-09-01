@@ -1,5 +1,7 @@
 package br.com.vinicius.banda.model;
 
+import br.com.vinicius.banda.dto.GravadoraDTO;
+
 public class Gravadora {
 
 	private Integer codigo;
@@ -40,4 +42,7 @@ public class Gravadora {
 		this.pais = pais;
 	}
 
+	public GravadoraDTO toDTO() {
+		return new GravadoraDTO(this.codigo, this.nome, this.pais.getNome());
+	}
 }

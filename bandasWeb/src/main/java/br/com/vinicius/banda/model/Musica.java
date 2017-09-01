@@ -1,5 +1,7 @@
 package br.com.vinicius.banda.model;
 
+import br.com.vinicius.banda.dto.MusicaDTO;
+
 public class Musica {
 
 	private Integer codigo;
@@ -38,6 +40,10 @@ public class Musica {
 
 	public void setDuracao(Long duracao) {
 		this.duracao = duracao;
+	}
+
+	public MusicaDTO toDTO() {
+		return new MusicaDTO(this.codigo, this.nome, this.duracao);
 	}
 
 }

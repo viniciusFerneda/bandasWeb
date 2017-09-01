@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.vinicius.banda.dto.BandaDTO;
 import br.com.vinicius.banda.model.Banda;
 
 public class BandaDAO {
@@ -19,7 +20,7 @@ public class BandaDAO {
 	}
 
 	public boolean inserir(Banda banda) throws SQLException {
-		String sql = "INSERT INTO BANDA (BAN_CODIGO, BAN_NOME, BAN_DT_CRIACAO, BAN_PAIS) VALUES (SEQ_BANDA.nextval, ?, ?, ?)";
+		String sql = "INSERT INTO BANDA (BAN_CODIGO, BAN_NOME, BAN_DT_CRIACAO, BAN_PAIS) VALUES (SEQ_BANDA.NEXTVAL, ?, ?, ?)";
 
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, banda.getNome());
@@ -49,24 +50,44 @@ public class BandaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public List<Banda> lista() throws SQLException {
-		List<Banda> bandas = new ArrayList<>();
 
-		String sql = "select * from BANDA";
+	public List<BandaDTO> lista() throws SQLException {
+		List<BandaDTO> bandas = new ArrayList<>();
+
+		String sql = "SELECT * FROM BANDA";
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					int id = rs.getInt("ban_codigo");
-					String nome = rs.getString("ban_nome");
-					Date dtCriacao = rs.getDate("ban_dt_criacao");
-					Banda banda = new Banda(id, nome, dtCriacao, null);
+					int id = rs.getInt("BAN_CODIGO");
+					String nome = rs.getString("BAN_NOME");
+					Date dtCriacao = rs.getDate("BAN_DT_CRIACAO");
+					BandaDTO banda = new Banda(id, nome, dtCriacao, null).toDTO();
 					bandas.add(banda);
 				}
 			}
 		}
 		return bandas;
 	}
-	
+
+	public BandaDTO buscarBandaPorCodigo(int codigo) throws SQLException {
+		BandaDTO banda = new BandaDTO();
+
+		String sql = "SELECT * FROM BANDA WHERE BAN_CODIGO = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, codigo);
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("BAN_CODIGO");
+					String nome = rs.getString("BAN_NOME");
+					Date dtCriacao = rs.getDate("BAN_DT_CRIACAO");
+					banda = new Banda(id, nome, dtCriacao, null).toDTO();
+				}
+			}
+		}
+		
+		return banda;
+	}
+
 }

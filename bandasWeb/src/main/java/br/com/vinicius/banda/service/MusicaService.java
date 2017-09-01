@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.vinicius.banda.dao.MusicaDAO;
+import br.com.vinicius.banda.dto.MusicaDTO;
 import br.com.vinicius.banda.jdbc.oracle.ConnectionPoolOracle;
 import br.com.vinicius.banda.model.Musica;
 
@@ -28,9 +29,15 @@ public class MusicaService {
 		}
 	}
 	
-	public List<Musica> listarMusicas() throws SQLException{
+	public List<MusicaDTO> listarMusicas() throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
             return new MusicaDAO(con).lista();
+		}
+	}
+
+	public MusicaDTO buscarMusicaPorCodigo(int codigo) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+            return new MusicaDAO(con).buscarMusicaPorCodigo(codigo);
 		}
 	}
 	

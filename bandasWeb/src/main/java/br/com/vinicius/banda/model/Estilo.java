@@ -1,5 +1,7 @@
 package br.com.vinicius.banda.model;
 
+import br.com.vinicius.banda.dto.EstiloDTO;
+
 public class Estilo {
 
 	private Integer codigo;
@@ -28,6 +30,10 @@ public class Estilo {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public EstiloDTO toDTO() {
+		return new EstiloDTO(this.codigo, this.nome);
 	}
 
 }

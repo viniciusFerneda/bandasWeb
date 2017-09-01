@@ -1,5 +1,7 @@
 package br.com.vinicius.banda.model;
 
+import br.com.vinicius.banda.dto.CantaDTO;
+
 public class Canta {
 
 	private Integer codigo;
@@ -67,6 +69,10 @@ public class Canta {
 
 	public void setEstilo(Estilo estilo) {
 		this.estilo = estilo;
+	}
+	
+	public CantaDTO toDTO() {
+		return new CantaDTO(this.codigo, this.anoGravacao, this.banda.getNome(), this.musica.getNome(), this.gravadora.getNome(), this.estilo.getNome());
 	}
 
 }

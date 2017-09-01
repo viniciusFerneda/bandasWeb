@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.vinicius.banda.dao.EstiloDAO;
+import br.com.vinicius.banda.dto.EstiloDTO;
 import br.com.vinicius.banda.jdbc.oracle.ConnectionPoolOracle;
 import br.com.vinicius.banda.model.Estilo;
 
@@ -28,9 +29,15 @@ public class EstiloService {
 		}
 	}
 	
-	public List<Estilo> listarEstilos() throws SQLException{
+	public List<EstiloDTO> listarEstilos() throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
             return new EstiloDAO(con).lista();
+		}
+	}
+
+	public EstiloDTO buscarEstiloPorCodigo(int codigo) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+            return new EstiloDAO(con).buscarEstiloPorCodigo(codigo);
 		}
 	}
 	
