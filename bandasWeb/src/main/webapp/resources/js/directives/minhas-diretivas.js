@@ -23,10 +23,11 @@ angular.module('minhasDiretivas', [])
 
         ddo.scope = {
             nome: '@',
-            url: '@'
+            dtCriacao: '@',
+            pais: '@'
         };
 
-        ddo.template = '<img class="img-responsive center-block" src="{{url}}" alt="{{nome}}">';           
+        ddo.template = 'js/directives/minha-banda.html';
         
         return ddo;
     })

@@ -11,9 +11,20 @@
 		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
     </head>
 	<body>
+
+		<!-- Cabeçalho-->
+		<div id="includedCabecalho"></div>
+
+		<!-- Tela de Login -->
+		<div id="includedLogin"></div>
+
+		<!--Menu Lateral Esquerda-->
+		<div id="includedMenu"></div>
+
+		<!--Corpo do Sistema -->
 		<div class="container">
 			<ng-view></ng-view>
-		</div> <!-- fim container -->  
+		</div>
 		
 		<script src="lib/angular/angular.min.js"></script>
         <script src="lib/angular/angular-animate.min.js"></script>
@@ -32,5 +43,19 @@
 		<script src="js/directives/minhas-diretivas.js"></script>
 		
         <script src="js/services/meus-servicos.js"></script>
+
+        <script> 
+		    $(function(){
+		      $("#includedCabecalho").load("cabecalho.html"); 
+		    });
+
+		    $(function(){
+		      $("#includedLogin").load("login.html"); 
+		    });
+
+		    $(function(){
+		      $("#includedMenu").load("menu.html"); 
+		    });
+	    </script>
 	</body>
 </html>

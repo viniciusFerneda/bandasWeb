@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<p ng-show="mensagem.length" class="alert alert-info">
+	{{mensagem}}
+</p>
 
-</body>
-</html>
+<div class="row">
+	<div class="col-md-12">
+		<form>
+			<div class="input-group">
+				<span class="input-group-btn">
+					<a href="/bandas/bandas/new" class="btn btn-primary" type="button">
+						Nova Banda
+					</a>
+				</span>
+				<input class="form-control" placeholder="filtrar pelo nome da banda" 
+					ng-model="filtro" ng-model-options="{ debounce: 500 }">
+		</form>
+	</div> <!-- fim col-md-12 -->
+</div> <!-- fim row -->
+
+<div class="row">
+    <meu-painel class="col-md-2 painel-animado" ng-repeat="banda in bandas | filter: filtro" titulo="{{banda.nome}}">
+        <minha-banda nome="{{banda.nome}}" dtCriacao="{{banda.dtCriacao}}" pais="{{banda.pais}}"></minha-banda>
+
+		<a class="btn btn-primary btn-block" href="/bandas/bandas/edit/{{banda._id}}">
+			Editar
+		</a>
+		<meu-botao-perigo nome="Remover" acao="remover(banda)">Remover</meu-botao-perigo>
+    </meu-painel>
+</div>
