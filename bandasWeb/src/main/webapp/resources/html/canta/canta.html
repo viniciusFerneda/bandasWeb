@@ -1,0 +1,82 @@
+<div class="page-header text-center">
+	<h1>{{canta.musica}}</h1>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label>Ano da gravação</label>
+			<input name="anoGravacao" class="form-control" ng-model="canta.anoGravacao" required>  
+
+			<span ng-show="formulario.$submitted && formulario.anoGravacao.$error.required"
+				class="form-control alert-danger">
+				Ano da gravação é obrigatório
+			</span>
+		</div>
+
+		<div class="form-group">
+			<label>Banda</label>
+			<select name="banda" ng-model="canta.banda" class="form-control" 
+					required ng-controller="BandasController" 
+					ng-options="banda._id as (banda.nome | uppercase) for banda in bandas">
+				<option value="">Escolha uma banda</option>
+			</select>
+			<span ng-show="formulario.$submitted && formulario.banda.$error.required" 
+				class="form-control alert-danger">
+				Banda é obrigatória
+			</span>
+		</div>
+
+		<div class="form-group">
+			<label>Música</label>
+			<select name="musica" ng-model="canta.musica" class="form-control" 
+					required ng-controller="BandasController" 
+					ng-options="musica._id as (musica.nome | uppercase) for musica in musicas">
+				<option value="">Escolha uma música</option>
+			</select>
+			<span ng-show="formulario.$submitted && formulario.musica.$error.required" 
+				class="form-control alert-danger">
+				Música é obrigatória
+			</span>
+		</div>
+
+		<div class="form-group">
+			<label>Gravadora</label>
+			<select name="gravadora" ng-model="canta.gravadora" class="form-control" 
+					required ng-controller="GravadorasController" 
+					ng-options="gravadora._id as (gravadora.nome | uppercase) for gravadora in gravadoras">
+				<option value="">Escolha uma gravadora</option>
+			</select>
+			<span ng-show="formulario.$submitted && formulario.gravadora.$error.required" 
+				class="form-control alert-danger">
+				Gravadora é obrigatória
+			</span>
+		</div>
+
+		<div class="form-group">
+			<label>Estilo</label>
+			<select name="estilo" ng-model="canta.estilo" class="form-control" 
+					required ng-controller="EstilosController" 
+					ng-options="estilo._id as (estilo.nome | uppercase) for estilo in estilos">
+				<option value="">Escolha um estilo</option>
+			</select>
+			<span ng-show="formulario.$submitted && formulario.estilo.$error.required" 
+				class="form-control alert-danger">
+				Estilo é obrigatória
+			</span>
+		</div>
+
+		<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">
+			Salvar
+		</button>
+		<a href="/" meu-focus class="btn btn-primary">Voltar</a>
+		<hr>
+	</div>
+	
+	<div class="col-md-6">
+		<minha-canta anoGravacao="{{canta.anoGravacao}}" banda="{{canta.banda}}" musica="{{canta.musica}}" gravadora="{{canta.gravadora}}" estilo="{{canta.estilo}}"></minha-canta>
+	</div>
+
+</form>

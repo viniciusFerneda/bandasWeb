@@ -10,7 +10,7 @@
 			<label>Nome</label>
 			<input name="nome" class="form-control" ng-model="banda.nome" required>  
 
-			<span ng-show = "formulario.$submitted && formulario.nome.$error.required"
+			<span ng-show="formulario.$submitted && formulario.nome.$error.required"
 				class="form-control alert-danger">
 				Nome é obrigatório
 			</span>

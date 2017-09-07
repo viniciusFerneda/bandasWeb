@@ -1,0 +1,47 @@
+<div class="page-header text-center">
+	<h1>{{gravadora.nome}}</h1>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label>Nome</label>
+			<input name="nome" class="form-control" ng-model="gravadora.nome" required>  
+
+			<span ng-show="formulario.$submitted && formulario.nome.$error.required"
+				class="form-control alert-danger">
+				Nome é obrigatório
+			</span>
+			<span ng-show="formulario.$submitted && formulario.nome.$error.maxlength" 
+				class="form-control alert-danger">
+				Nome deve possuir no máximo 20 caracteres!
+			</span>
+		</div>
+
+		<div class="form-group">
+			<label>País</label>
+			<select name="pais" ng-model="gravadora.pais" class="form-control" 
+					required ng-controller="PaisesController" 
+					ng-options="pais._id as (pais.nome | uppercase) for pais in paises">
+				<option value="">Escolha um país</option>
+			</select>
+			<span ng-show="formulario.$submitted && formulario.pais.$error.required" 
+				class="form-control alert-danger">
+				País é obrigatório
+			</span>
+		</div>
+
+		<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">
+			Salvar
+		</button>
+		<a href="/" meu-focus class="btn btn-primary">Voltar</a>
+		<hr>
+	</div>
+	
+	<div class="col-md-6">
+		<minha-gravadora nome="{{gravadora.nome}}" pais="{{gravadora.pais}}"></minha-gravadora>
+	</div>
+
+</form>
