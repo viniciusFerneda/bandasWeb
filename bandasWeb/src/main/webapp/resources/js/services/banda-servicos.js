@@ -1,4 +1,4 @@
-angular.module('meusServicos', ['ngResource'])
+angular.module('bandaServicos', ['ngResource'])
 	.factory('recursoBanda', function($resource) {
 
 		return $resource('/v1/bandas/:bandaId', null, {

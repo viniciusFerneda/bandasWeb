@@ -1,4 +1,6 @@
-angular.module('BandaApp', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 'meusServicos'])
+angular.module('BandaApp', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 
+	'bandaServicos', 'cantaServicos', 'estiloServicos', 'gravadoraServicos', 'musicaServicos', 
+	'paisServicos'])
 	.config(function($routeProvider, $locationProvider) {
 
 		$locationProvider.html5Mode(true);
