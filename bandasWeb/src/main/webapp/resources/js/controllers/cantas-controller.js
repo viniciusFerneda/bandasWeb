@@ -1,69 +1,24 @@
-angular.module("BandaApp", [])
-        .value('urlBase', 'http://localhost:9080/bandasWeb/rest/')
-        .controller("BandaController", function ($http, urlBase) {
-            var self = this;
+angular.module("BandaApp").controller("CantasController",function($scope, recursoCanta) {
 
-            self.bandas = [];
-            self.bandas = undefined;
+	$scope.cantas = [];
+	$scope.filtro = '';
+	$scope.mensagem = '';
 
-            self.novo = function () {
-                self.banda = {};
-            };
+	recursoCanta.query(function(cantas) {
+		$scope.cantas = cantas;
+	}, function(erro) {
+		console.log(erro);
+	});
 
-            self.salvar = function () {
-                var metodo = 'POST';
-                if (self.banda.codigo) {
-                    metodo = 'PUT';
-                }
-
-                $http({
-                    method: metodo,
-                    url: urlBase + 'bandas/',
-                    data: self.banda
-                }).then(function successCallback(response) {
-                    self.atualizarTabela();
-                }, function errorCallback(response) {
-                	console.log(response);
-                    self.ocorreuErro();
-                });
-            };
-
-            self.alterar = function (banda) {
-                self.banda = banda;
-            };
-
-            self.deletar = function (banda) {
-                self.banda = banda;
-
-                $http({
-                    method: 'DELETE',
-                    url: urlBase + 'bandas/' + self.banda.codigo + '/'
-                }).then(function successCallback(response) {
-                    self.atualizarTabela();
-                }, function errorCallback(response) {
-                    self.ocorreuErro();
-                });
-            };
-
-            self.ocorreuErro = function () {
-                alert("Ocorreu um erro inesperado!");
-            };
-
-            self.atualizarTabela = function () {
-                $http({
-                    method: 'GET',
-                    url: urlBase + 'bandas/'
-                }).then(function successCallback(response) {
-                    self.pessoas = response.data;
-                    self.pessoa = undefined;
-                }, function errorCallback(response) {
-                    self.ocorreuErro();
-                });
-            };
-
-            self.activate = function () {
-                self.atualizarTabela();
-            };
-            
-            self.activate();
-        });
+	$scope.remover = function(canta) {
+		recursoCanta.delete({cantaId: canta._id}, function() {
+			var indiceDaCanta = $scope.cantas.indexOf(canta);
+			$scope.cantas.splice(indiceDaCanta, 1);
+			$scope.mensagem = 'Canta ' + canta.banda + ' removida com sucesso!';
+		}, function(erro) {
+			console.log(erro);
+			$scope.mensagem = 'Não foi possível apagar a canta ' + canta.banda;
+		});
+	};
+	
+});

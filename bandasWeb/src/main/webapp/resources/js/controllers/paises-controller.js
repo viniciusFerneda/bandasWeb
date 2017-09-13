@@ -1,69 +1,24 @@
-angular.module("BandaApp", [])
-        .value('urlBase', 'http://localhost:9080/bandasWeb/rest/')
-        .controller("BandaController", function ($http, urlBase) {
-            var self = this;
+angular.module("BandaApp").controller("PaisesController",function($scope, recursoPais) {
 
-            self.bandas = [];
-            self.bandas = undefined;
+	$scope.paises = [];
+	$scope.filtro = '';
+	$scope.mensagem = '';
 
-            self.novo = function () {
-                self.banda = {};
-            };
+	recursoPais.query(function(paises) {
+		$scope.paises = paises;
+	}, function(erro) {
+		console.log(erro);
+	});
 
-            self.salvar = function () {
-                var metodo = 'POST';
-                if (self.banda.codigo) {
-                    metodo = 'PUT';
-                }
-
-                $http({
-                    method: metodo,
-                    url: urlBase + 'bandas/',
-                    data: self.banda
-                }).then(function successCallback(response) {
-                    self.atualizarTabela();
-                }, function errorCallback(response) {
-                	console.log(response);
-                    self.ocorreuErro();
-                });
-            };
-
-            self.alterar = function (banda) {
-                self.banda = banda;
-            };
-
-            self.deletar = function (banda) {
-                self.banda = banda;
-
-                $http({
-                    method: 'DELETE',
-                    url: urlBase + 'bandas/' + self.banda.codigo + '/'
-                }).then(function successCallback(response) {
-                    self.atualizarTabela();
-                }, function errorCallback(response) {
-                    self.ocorreuErro();
-                });
-            };
-
-            self.ocorreuErro = function () {
-                alert("Ocorreu um erro inesperado!");
-            };
-
-            self.atualizarTabela = function () {
-                $http({
-                    method: 'GET',
-                    url: urlBase + 'bandas/'
-                }).then(function successCallback(response) {
-                    self.pessoas = response.data;
-                    self.pessoa = undefined;
-                }, function errorCallback(response) {
-                    self.ocorreuErro();
-                });
-            };
-
-            self.activate = function () {
-                self.atualizarTabela();
-            };
-            
-            self.activate();
-        });
+	$scope.remover = function(pais) {
+		recursoPais.delete({paisId: pais._id}, function() {
+			var indiceDoPais = $scope.paises.indexOf(pais);
+			$scope.paises.splice(indiceDoPais, 1);
+			$scope.mensagem = 'País ' + pais.nome + ' removido com sucesso!';
+		}, function(erro) {
+			console.log(erro);
+			$scope.mensagem = 'Não foi possível apagar o país ' + pais.nome;
+		});
+	};
+	
+});
