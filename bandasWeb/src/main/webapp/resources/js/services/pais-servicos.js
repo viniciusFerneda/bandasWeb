@@ -1,7 +1,7 @@
 angular.module('paisServicos', ['ngResource'])
 	.factory('recursoPais', function($resource) {
 
-		return $resource('/v1/paises/:paisId', null, {
+		return $resource('/bandasWeb/paises/:paisId', null, {
 			'update' : { 
 				method: 'PUT'
 			}

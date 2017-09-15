@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="BandaApp">
 	<head>
-        <base href="/">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		
+		<base href="/bandasWeb/">
+		
 		<title>Bandas</title>
 		
-		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="resources/lib/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="resources/lib/bootstrap/css/bootstrap-theme.min.css">
     </head>
 	<body>
 
 		<!-- Cabeçalho-->
 		<div id="includedCabecalho"></div>
 
-		<!-- Tela de Login -->
+		<!-- 
+		Tela de Login 
 		<div id="includedLogin"></div>
+		-->
 
-		<!--Menu Lateral Esquerda-->
-		<div id="includedMenu"></div>
-
-		<!--Corpo do Sistema -->
-		<div class="container">
-			<ng-view></ng-view>
+		<div class="row">
+			<div class="col-md-2">
+				<!--Menu Lateral Esquerda-->
+				<div id="includedMenu"></div>
+			</div>
+	
+			<div class="col-md-10">
+				<!--Corpo do Sistema -->
+				<div class="container">
+					<ng-view></ng-view>
+				</div>
+			</div>
+		
 		</div>
 		
-		<script src="lib/angular/angular.min.js"></script>
-        <script src="lib/angular/angular-animate.min.js"></script>
-        <script src="lib/angular/angular-route.min.js"></script>
-        <script src="lib/angular/angular-resource.min.js"></script>
+		<script src="resources/lib/angular/angular.min.js"></script>
+        <script src="resources/lib/angular/angular-animate.min.js"></script>
+        <script src="resources/lib/angular/angular-route.min.js"></script>
+        <script src="resources/lib/angular/angular-resource.min.js"></script>
         
-        <script src="lib/js/jquery.js"></script>
-		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-		<script src="lib/js/navbar-animation-fix.js"></script>
+        <script src="resources/lib/js/jquery.js"></script>
+		<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="resources/lib/js/navbar-animation-fix.js"></script>
         
-		<script src="js/main.js"></script>
+		<script src="resources/js/main.js"></script>
 		
-		<script src="js/controllers/bandas-controller.js"></script>
-        <script src="js/controllers/banda-controller.js"></script>
+		<script src="resources/js/controllers/bandas-controller.js"></script>
+        <script src="resources/js/controllers/banda-controller.js"></script>
         
-        <script src="js/controllers/cantas-controller.js"></script>
-        <script src="js/controllers/canta-controller.js"></script>
+        <script src="resources/js/controllers/cantas-controller.js"></script>
+        <script src="resources/js/controllers/canta-controller.js"></script>
         
-        <script src="js/controllers/estilos-controller.js"></script>
-        <script src="js/controllers/estilo-controller.js"></script>
+        <script src="resources/js/controllers/estilos-controller.js"></script>
+        <script src="resources/js/controllers/estilo-controller.js"></script>
         
-        <script src="js/controllers/gravadoras-controller.js"></script>
-        <script src="js/controllers/gravadora-controller.js"></script>
+        <script src="resources/js/controllers/gravadoras-controller.js"></script>
+        <script src="resources/js/controllers/gravadora-controller.js"></script>
         
-        <script src="js/controllers/musicas-controller.js"></script>
-        <script src="js/controllers/musica-controller.js"></script>
+        <script src="resources/js/controllers/musicas-controller.js"></script>
+        <script src="resources/js/controllers/musica-controller.js"></script>
         
-        <script src="js/controllers/paises-controller.js"></script>
-        <script src="js/controllers/pais-controller.js"></script>
+        <script src="resources/js/controllers/paises-controller.js"></script>
+        <script src="resources/js/controllers/pais-controller.js"></script>
         
-		<script src="js/directives/minhas-diretivas.js"></script>
+		<script src="resources/js/directives/minhas-diretivas.js"></script>
 		
-        <script src="js/services/banda-servicos.js"></script>
-        <script src="js/services/canta-servicos.js"></script>
-        <script src="js/services/estilo-servicos.js"></script>
-        <script src="js/services/gravadora-servicos.js"></script>
-        <script src="js/services/musica-servicos.js"></script>
-        <script src="js/services/pais-servicos.js"></script>
+        <script src="resources/js/services/banda-servicos.js"></script>
+        <script src="resources/js/services/canta-servicos.js"></script>
+        <script src="resources/js/services/estilo-servicos.js"></script>
+        <script src="resources/js/services/gravadora-servicos.js"></script>
+        <script src="resources/js/services/musica-servicos.js"></script>
+        <script src="resources/js/services/pais-servicos.js"></script>
 
         <script> 
 		    $(function(){
-		      $("#includedCabecalho").load("cabecalho.html"); 
+		      $("#includedCabecalho").load("resources/html/cabecalho.html"); 
 		    });
 
-		    $(function(){
+		    /* $(function(){
 		      $("#includedLogin").load("login.html"); 
-		    });
+		    }); */
 
 		    $(function(){
-		      $("#includedMenu").load("menu.html"); 
+		      $("#includedMenu").load("resources/html/menu.html"); 
 		    });
 	    </script>
 	</body>

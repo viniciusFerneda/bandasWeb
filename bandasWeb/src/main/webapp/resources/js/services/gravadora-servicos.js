@@ -1,7 +1,7 @@
 angular.module('gravadoraServicos', ['ngResource'])
 	.factory('recursoGravadora', function($resource) {
 
-		return $resource('/v1/gravadoras/:gravadoraId', null, {
+		return $resource('/bandasWeb/gravadoras/:gravadoraId', null, {
 			'update' : { 
 				method: 'PUT'
 			}

@@ -1,7 +1,7 @@
 angular.module('estiloServicos', ['ngResource'])
 	.factory('recursoEstilo', function($resource) {
 
-		return $resource('/v1/estilos/:estiloId', null, {
+		return $resource('/bandasWeb/estilos/:estiloId', null, {
 			'update' : { 
 				method: 'PUT'
 			}

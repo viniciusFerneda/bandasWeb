@@ -1,7 +1,7 @@
 angular.module('musicaServicos', ['ngResource'])
 	.factory('recursoMusica', function($resource) {
 
-		return $resource('/v1/musicas/:musicaId', null, {
+		return $resource('/bandasWeb/musicas/:musicaId', null, {
 			'update' : { 
 				method: 'PUT'
 			}
