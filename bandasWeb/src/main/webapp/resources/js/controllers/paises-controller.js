@@ -3,7 +3,7 @@ angular.module("BandaApp").controller("PaisesController",function($scope, recurs
 	$scope.paises = [];
 	$scope.filtro = '';
 	$scope.mensagem = '';
-
+	
 	recursoPais.query(function(paises) {
 		$scope.paises = paises;
 	}, function(erro) {

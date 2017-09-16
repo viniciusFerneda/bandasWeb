@@ -1,6 +1,14 @@
 angular.module('paisServicos', ['ngResource'])
 	.factory('recursoPais', function($resource) {
-
+		return $resource('/bandasWeb/paises/:paisId', {}, {
+		    query: {
+		      method: 'GET',
+		      transformResponse: function(data) {
+		        return angular.fromJson(data).events;
+		      },
+		      isArray: true
+		    }
+		  });
 		return $resource('/bandasWeb/paises/:paisId', null, {
 			'update' : { 
 				method: 'PUT'
@@ -9,7 +17,7 @@ angular.module('paisServicos', ['ngResource'])
 	})
 	.factory("cadastroDePaises", function(recursoPais, $q, $rootScope) {
 		
-		var evento = 'paisCadastrada';
+		var evento = 'paisCadastrado';
 
 		var service = {};
 

@@ -11,7 +11,7 @@ angular.module('minhasDiretivas', [])
             titulo: '@'
         };
 
-        ddo.templateUrl = 'js/directives/meu-painel.html';
+        ddo.templateUrl = 'resources/js/directives/meu-painel.html';
 
 		return ddo;
 	})
@@ -27,7 +27,7 @@ angular.module('minhasDiretivas', [])
             pais: '@'
         };
 
-        ddo.template = 'js/directives/minha-banda.html';
+        ddo.template = 'resources/js/directives/minha-banda.html';
         
         return ddo;
     })
@@ -41,7 +41,7 @@ angular.module('minhasDiretivas', [])
             nome: '@'
         };
 
-        ddo.template = 'js/directives/meu-estilo.html';
+        ddo.template = 'resources/js/directives/meu-estilo.html';
         
         return ddo;
     })
@@ -55,7 +55,7 @@ angular.module('minhasDiretivas', [])
             nome: '@'
         };
 
-        ddo.template = 'js/directives/meu-pais.html';
+        ddo.template = 'resources/js/directives/meu-pais.html';
         
         return ddo;
     })
@@ -73,7 +73,7 @@ angular.module('minhasDiretivas', [])
         	estilo: '@'
         };
 
-        ddo.template = 'js/directives/minha-canta.html';
+        ddo.template = 'resources/js/directives/minha-canta.html';
         
         return ddo;
     })
@@ -88,7 +88,7 @@ angular.module('minhasDiretivas', [])
         	pais: '@'
         };
 
-        ddo.template = 'js/directives/minha-gravadora.html';
+        ddo.template = 'resources/js/directives/minha-gravadora.html';
         
         return ddo;
     })
@@ -103,7 +103,7 @@ angular.module('minhasDiretivas', [])
         	duracao: '@'
         };
 
-        ddo.template = 'js/directives/minha-musica.html';
+        ddo.template = 'resources/js/directives/minha-musica.html';
         
         return ddo;
     })
