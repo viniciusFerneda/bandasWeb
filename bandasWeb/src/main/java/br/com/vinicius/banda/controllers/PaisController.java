@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import br.com.vinicius.banda.dto.PaisDTO;
 import br.com.vinicius.banda.service.PaisService;
 
-@Path("paises")
+@Path("/paises")
 public class PaisController {
 
 	@GET

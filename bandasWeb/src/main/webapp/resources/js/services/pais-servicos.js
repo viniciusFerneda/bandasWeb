@@ -1,6 +1,6 @@
 angular.module('paisServicos', ['ngResource'])
 	.factory('recursoPais', function($resource) {
-		return $resource('/bandasWeb/paises/:paisId', {}, {
+		return $resource('/bandasWeb/rest/paises/:paisId', {}, {
 		    query: {
 		      method: 'GET',
 		      transformResponse: function(data) {
