@@ -1,15 +1,6 @@
 angular.module('paisServicos', ['ngResource'])
 	.factory('recursoPais', function($resource) {
-		return $resource('/bandasWeb/rest/paises/:paisId', {}, {
-		    query: {
-		      method: 'GET',
-		      transformResponse: function(data) {
-		        return angular.fromJson(data).events;
-		      },
-		      isArray: true
-		    }
-		  });
-		return $resource('/bandasWeb/paises/:paisId', null, {
+		return $resource('/bandasWeb/rest/paises/:paisId', null, {
 			'update' : { 
 				method: 'PUT'
 			}

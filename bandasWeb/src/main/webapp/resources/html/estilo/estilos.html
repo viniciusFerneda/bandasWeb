@@ -21,7 +21,7 @@
     <meu-painel class="col-md-2 painel-animado" ng-repeat="estilo in estilos | filter: filtro" titulo="{{estilo.nome}}">
         <meu-estilo nome="{{estilo.nome}}"></meu-estilo>
 
-		<a class="btn btn-primary btn-block" href="/bandas/estilos/edit/{{estilo._id}}">
+		<a class="btn btn-primary btn-block" href="/bandasWeb/estilos/edit/{{estilo._id}}">
 			Editar
 		</a>
 		<meu-botao-perigo nome="Remover" acao="remover(estilo)">Remover</meu-botao-perigo>

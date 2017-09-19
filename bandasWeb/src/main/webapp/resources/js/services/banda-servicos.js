@@ -1,7 +1,7 @@
 angular.module('bandaServicos', ['ngResource'])
 	.factory('recursoBanda', function($resource) {
 
-		return $resource('/bandasWeb/bandas/:bandaId', null, {
+		return $resource('/bandasWeb/rest/bandas/:bandaId', null, {
 			'update' : { 
 				method: 'PUT'
 			}

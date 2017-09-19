@@ -1,7 +1,7 @@
 angular.module('cantaServicos', ['ngResource'])
 	.factory('recursoCanta', function($resource) {
 
-		return $resource('/bandasWeb/cantas/:cantaId', null, {
+		return $resource('/bandasWeb/rest/cantas/:cantaId', null, {
 			'update' : { 
 				method: 'PUT'
 			}

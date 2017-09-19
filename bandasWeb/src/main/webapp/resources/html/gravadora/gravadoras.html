@@ -21,7 +21,7 @@
     <meu-painel class="col-md-2 painel-animado" ng-repeat="gravadora in gravadoras | filter: filtro" titulo="{{gravadora.nome}}">
         <minha-gravadora nome="{{gravadora.nome}}" pais="{{gravadora.pais}}"></minha-gravadora>
 
-		<a class="btn btn-primary btn-block" href="/bandas/gravadoras/edit/{{gravadora._id}}">
+		<a class="btn btn-primary btn-block" href="/bandasWeb/gravadoras/edit/{{gravadora._id}}">
 			Editar
 		</a>
 		<meu-botao-perigo nome="Remover" acao="remover(gravadora)">Remover</meu-botao-perigo>

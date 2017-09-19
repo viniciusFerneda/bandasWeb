@@ -10,12 +10,12 @@ angular.module('BandaApp', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResourc
 		});
 		
 		//Cadastro de Banda
-		$routeProvider.when('/bandas', {
+		$routeProvider.when('/bandasWeb/bandas', {
 			templateUrl: '/bandasWeb/resources/html/banda/bandas.html',
 			controller: 'BandasController'
 		});
 
-		$routeProvider.when('/bandas/new', {
+		$routeProvider.when('/bandasWeb/bandas/new', {
 			templateUrl: '/bandasWeb/resources/html/banda/banda.html',
 			controller: 'BandaController'
 		});
@@ -26,65 +26,65 @@ angular.module('BandaApp', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResourc
 		});
 
 		//Cadastro de Canta
-		$routeProvider.when('/cantas', {
+		$routeProvider.when('/bandasWeb/cantas', {
 			templateUrl: '/bandasWeb/resources/html/canta/cantas.html',
 			controller: 'CantasController'
 		});
 
-		$routeProvider.when('/cantas/new', {
+		$routeProvider.when('/bandasWeb/cantas/new', {
 			templateUrl: '/bandasWeb/resources/html/canta/canta.html',
 			controller: 'CantaController'
 		});
 
-		$routeProvider.when('/cantas/edit/:cantaId', {
+		$routeProvider.when('/bandasWeb/cantas/edit/:cantaId', {
 			templateUrl: '/bandasWeb/resources/html/canta/canta.html',
 			controller: 'CantaController'
 		});
 
 		//Cadastro de Estilo
-		$routeProvider.when('/estilos', {
+		$routeProvider.when('/bandasWeb/estilos', {
 			templateUrl: '/bandasWeb/resources/html/estilo/estilos.html',
 			controller: 'EstilosController'
 		});
 
-		$routeProvider.when('/estilos/new', {
+		$routeProvider.when('/bandasWeb/estilos/new', {
 			templateUrl: '/bandasWeb/resources/html/estilo/estilo.html',
 			controller: 'EstiloController'
 		});
 
-		$routeProvider.when('/estilos/edit/:estiloId', {
+		$routeProvider.when('/bandasWeb/estilos/edit/:estiloId', {
 			templateUrl: '/bandasWeb/resources/html/estilo/estilo.html',
 			controller: 'EstiloController'
 		});
 
 		//Cadastro de Gravadora
-		$routeProvider.when('/gravadoras', {
+		$routeProvider.when('/bandasWeb/gravadoras', {
 			templateUrl: '/bandasWeb/resources/html/gravadora/estilos.html',
 			controller: 'GravadorasController'
 		});
 
-		$routeProvider.when('/gravadoras/new', {
+		$routeProvider.when('/bandasWeb/gravadoras/new', {
 			templateUrl: '/bandasWeb/resources/html/gravadora/gravadora.html',
 			controller: 'GravadoraController'
 		});
 
-		$routeProvider.when('/gravadoras/edit/:gravadoraId', {
+		$routeProvider.when('/bandasWeb/gravadoras/edit/:gravadoraId', {
 			templateUrl: '/bandasWeb/resources/html/gravadora/gravadora.html',
 			controller: 'GravadoraController'
 		});
 
 		//Cadastro de Musica
-		$routeProvider.when('/musicas', {
+		$routeProvider.when('/bandasWeb/musicas', {
 			templateUrl: '/bandasWeb/resources/html/musica/musicas.html',
 			controller: 'MusicasController'
 		});
 
-		$routeProvider.when('/musicas/new', {
+		$routeProvider.when('/bandasWeb/musicas/new', {
 			templateUrl: '/bandasWeb/resources/html/musica/musica.html',
 			controller: 'MusicaController'
 		});
 
-		$routeProvider.when('/musicas/edit/:musicaId', {
+		$routeProvider.when('/bandasWeb/musicas/edit/:musicaId', {
 			templateUrl: '/bandasWeb/resources/html/musica/musica.html',
 			controller: 'MusicaController'
 		});
