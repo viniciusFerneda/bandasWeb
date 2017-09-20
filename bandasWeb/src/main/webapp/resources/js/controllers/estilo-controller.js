@@ -1,12 +1,12 @@
 angular.module('BandaApp')
-	.controller('BandaController', ['$scope', 'recursoBanda', '$routeParams', 'cadastroDeBandas', function($scope, recursoBanda, $routeParams, cadastroDeBandas) {
+	.controller('EstiloController', ['$scope', 'recursoEstilo', '$routeParams', 'cadastroDeEstilos', function($scope, recursoEstilo, $routeParams, cadastroDeEstilos) {
 
-		$scope.banda = {};
+		$scope.estilo = {};
 		$scope.mensagem = '';
 
-		if($routeParams.bandaId) {
-			recursoBanda.get({bandaId: $routeParams.bandaId}, function(banda) {
-				$scope.banda = banda; 
+		if($routeParams.estiloId) {
+			recursoEstilo.get({estiloId: $routeParams.estiloId}, function(estilo) {
+				$scope.estilo = estilo; 
 			}, function(erro) {
 				console.log(erro);
 				$scope.mensagem = 'Não foi possível obter a Banda'
@@ -16,10 +16,10 @@ angular.module('BandaApp')
 		$scope.submeter = function() {
 
 			if ($scope.formulario.$valid) {
-				cadastroDeBandas.cadastrar($scope.banda)
+				cadastroDeEstilos.cadastrar($scope.estilo)
 				.then(function(dados) {
 					$scope.mensagem = dados.mensagem;
-					if (dados.inclusao) $scope.banda = {};
+					if (dados.inclusao) $scope.estilo = {};
 				})
 				.catch(function(erro) {
 					$scope.mensagem = erro.mensagem;

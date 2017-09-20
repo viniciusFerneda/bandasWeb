@@ -18,10 +18,12 @@
 </div> <!-- fim row -->
 
 <div class="row">
+</div>
+
+<div class="row">
     <meu-painel class="col-md-2 painel-animado" ng-repeat="pais in paises | filter: filtro" titulo="{{pais.nome}}">
         <meu-pais nome="{{pais.nome}}"></meu-pais>
-
-		<a class="btn btn-primary btn-block" href="/bandasWeb/paises/edit/{{pais._id}}">
+		<a class="btn btn-primary btn-block" href="/bandasWeb/paises/edit/{{pais.codigo}}">
 			Editar
 		</a>
 		<meu-botao-perigo nome="Remover" acao="remover(pais)">Remover</meu-botao-perigo>

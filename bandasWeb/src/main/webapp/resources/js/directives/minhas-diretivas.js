@@ -6,7 +6,6 @@ angular.module('minhasDiretivas', [])
 		ddo.restrict = "AE";
         ddo.transclude = true;
 
-
 		ddo.scope = {
             titulo: '@'
         };
@@ -27,7 +26,7 @@ angular.module('minhasDiretivas', [])
             pais: '@'
         };
 
-        ddo.template = 'bandasWeb/resources/js/directives/minha-banda.html';
+        ddo.templateUrl = 'bandasWeb/resources/js/directives/minha-banda.html';
         
         return ddo;
     })
@@ -41,7 +40,7 @@ angular.module('minhasDiretivas', [])
             nome: '@'
         };
 
-        ddo.template = 'bandasWeb/resources/js/directives/meu-estilo.html';
+        ddo.templateUrl = 'bandasWeb/resources/js/directives/meu-estilo.html';
         
         return ddo;
     })
@@ -55,7 +54,7 @@ angular.module('minhasDiretivas', [])
             nome: '@'
         };
 
-        ddo.template = 'bandasWeb/resources/js/directives/meu-pais.html';
+        ddo.templateUrl = 'bandasWeb/resources/js/directives/meu-pais.html';
         
         return ddo;
     })
@@ -73,7 +72,7 @@ angular.module('minhasDiretivas', [])
         	estilo: '@'
         };
 
-        ddo.template = 'bandasWeb/resources/js/directives/minha-canta.html';
+        ddo.templateUrl = 'bandasWeb/resources/js/directives/minha-canta.html';
         
         return ddo;
     })
@@ -88,7 +87,7 @@ angular.module('minhasDiretivas', [])
         	pais: '@'
         };
 
-        ddo.template = 'bandasWeb/resources/js/directives/minha-gravadora.html';
+        ddo.templateUrl = 'bandasWeb/resources/js/directives/minha-gravadora.html';
         
         return ddo;
     })
@@ -103,7 +102,7 @@ angular.module('minhasDiretivas', [])
         	duracao: '@'
         };
 
-        ddo.template = 'bandasWeb/resources/js/directives/minha-musica.html';
+        ddo.templateUrl = 'bandasWeb/resources/js/directives/minha-musica.html';
         
         return ddo;
     })

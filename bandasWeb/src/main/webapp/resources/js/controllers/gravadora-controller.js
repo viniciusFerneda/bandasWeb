@@ -1,12 +1,12 @@
 angular.module('BandaApp')
-	.controller('BandaController', ['$scope', 'recursoBanda', '$routeParams', 'cadastroDeBandas', function($scope, recursoBanda, $routeParams, cadastroDeBandas) {
+	.controller('GravadoraController', ['$scope', 'recursoGravadora', '$routeParams', 'cadastroDeGravadoras', function($scope, recursoGravadora, $routeParams, cadastroDeGravadoras) {
 
-		$scope.banda = {};
+		$scope.gravadora = {};
 		$scope.mensagem = '';
 
-		if($routeParams.bandaId) {
-			recursoBanda.get({bandaId: $routeParams.bandaId}, function(banda) {
-				$scope.banda = banda; 
+		if($routeParams.gravadoraId) {
+			recursoGravadora.get({gravadoraId: $routeParams.gravadoraId}, function(gravadora) {
+				$scope.gravadora = gravadora; 
 			}, function(erro) {
 				console.log(erro);
 				$scope.mensagem = 'Não foi possível obter a Banda'
@@ -14,12 +14,11 @@ angular.module('BandaApp')
 		}
 
 		$scope.submeter = function() {
-
 			if ($scope.formulario.$valid) {
-				cadastroDeBandas.cadastrar($scope.banda)
+				cadastroDeGravadoras.cadastrar($scope.gravadora)
 				.then(function(dados) {
 					$scope.mensagem = dados.mensagem;
-					if (dados.inclusao) $scope.banda = {};
+					if (dados.inclusao) $scope.gravadora = {};
 				})
 				.catch(function(erro) {
 					$scope.mensagem = erro.mensagem;
