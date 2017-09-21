@@ -51,6 +51,7 @@ angular.module('minhasDiretivas', [])
         ddo.restrict = "AE";
 
         ddo.scope = {
+        	codigo: '@',
             nome: '@'
         };
 

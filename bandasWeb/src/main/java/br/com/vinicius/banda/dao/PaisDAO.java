@@ -69,8 +69,9 @@ public class PaisDAO {
 	public PaisDTO buscarPaisPorCodigo(int codigo) throws SQLException {
 		PaisDTO pais = new PaisDTO();
 
-		String sql = "SELECT * FROM PAIS";
+		String sql = "SELECT * FROM PAIS WHERE PAI_CODIGO = ?";
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, codigo);
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {

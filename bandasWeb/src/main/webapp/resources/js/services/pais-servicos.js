@@ -14,27 +14,24 @@ angular.module('paisServicos', ['ngResource'])
 
 		service.cadastrar = function(pais) {
 			return $q(function(resolve, reject) {
-
-				if(pais._id) {
-					recursoPais.update({paisId: pais._id}, pais, function() {
-
+				if(pais.codigo) {
+					recursoPais.update(pais, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
-							mensagem: 'Pais ' + pais.nome + ' atualizada com sucesso',
+							mensagem: 'País ' + pais.nome + ' atualizado com sucesso',
 							inclusao: false
 						});
 					}, function(erro) {
 						console.log(erro);
 						reject({
-							mensagem: 'Não foi possível atualizar a pais ' + pais.nome
+							mensagem: 'Não foi possível atualizar o País ' + pais.nome
 						});
 					});
-
 				} else {
 					recursoPais.save(pais, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
-							mensagem: 'Pais ' + pais.nome + ' incluída com sucesso',
+							mensagem: 'Pais ' + pais.nome + ' incluído com sucesso',
 							inclusao: true
 						});
 					}, function(erro) {

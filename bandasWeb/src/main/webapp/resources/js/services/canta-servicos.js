@@ -16,8 +16,8 @@ angular.module('cantaServicos', ['ngResource'])
 		service.cadastrar = function(canta) {
 			return $q(function(resolve, reject) {
 
-				if(canta._id) {
-					recursoCanta.update({cantaId: canta._id}, canta, function() {
+				if(canta.codigo) {
+					recursoCanta.update({cantaId: canta.codigo}, canta, function() {
 
 						$rootScope.$broadcast(evento);
 						resolve({

@@ -11,7 +11,7 @@ angular.module("BandaApp").controller("PaisesController",function($scope, recurs
 	});
 
 	$scope.remover = function(pais) {
-		recursoPais.delete({paisId: pais._id}, function() {
+		recursoPais.delete({paisId: pais.codigo}, function() {
 			var indiceDoPais = $scope.paises.indexOf(pais);
 			$scope.paises.splice(indiceDoPais, 1);
 			$scope.mensagem = 'País ' + pais.nome + ' removido com sucesso!';

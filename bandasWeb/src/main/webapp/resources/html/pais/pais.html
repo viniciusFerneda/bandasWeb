@@ -7,6 +7,9 @@
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
 	<div class="col-md-6">
 		<div class="form-group">
+			<label>Código</label>
+			<input name="nome" class="form-control" ng-model="pais.codigo" disabled>
+			
 			<label>Nome</label>
 			<input name="nome" class="form-control" ng-model="pais.nome" required>  
 
@@ -28,9 +31,4 @@
 		
 		<hr>
 	</div>
-
-	<div class="col-md-6">
-		<meu-pais nome="{{pais.nome}}"></meu-pais>
-	</div>
-
 </form>

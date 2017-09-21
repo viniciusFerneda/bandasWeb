@@ -15,8 +15,8 @@ angular.module('gravadoraServicos', ['ngResource'])
 		service.cadastrar = function(gravadora) {
 			return $q(function(resolve, reject) {
 
-				if(gravadora._id) {
-					recursoGravadora.update({gravadoraId: gravadora._id}, gravadora, function() {
+				if(gravadora.codigo) {
+					recursoGravadora.update({gravadoraId: gravadora.codigo}, gravadora, function() {
 
 						$rootScope.$broadcast(evento);
 						resolve({

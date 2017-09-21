@@ -24,7 +24,7 @@
 			<label>País</label>
 			<select name="pais" ng-model="gravadora.pais" class="form-control" 
 					required ng-controller="PaisesController" 
-					ng-options="pais._id as (pais.nome | uppercase) for pais in paises">
+					ng-options="pais.codigo as (pais.nome | uppercase) for pais in paises">
 				<option value="">Escolha um país</option>
 			</select>
 			<span ng-show="formulario.$submitted && formulario.pais.$error.required" 

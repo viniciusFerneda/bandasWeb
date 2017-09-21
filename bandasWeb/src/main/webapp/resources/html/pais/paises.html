@@ -22,7 +22,7 @@
 
 <div class="row">
     <meu-painel class="col-md-2 painel-animado" ng-repeat="pais in paises | filter: filtro" titulo="{{pais.nome}}">
-        <meu-pais nome="{{pais.nome}}"></meu-pais>
+        <meu-pais codigo="{{pais.codigo}}" nome="{{pais.nome}}"></meu-pais>
 		<a class="btn btn-primary btn-block" href="/bandasWeb/paises/edit/{{pais.codigo}}">
 			Editar
 		</a>

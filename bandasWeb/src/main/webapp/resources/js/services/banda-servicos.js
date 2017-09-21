@@ -16,8 +16,8 @@ angular.module('bandaServicos', ['ngResource'])
 		service.cadastrar = function(banda) {
 			return $q(function(resolve, reject) {
 
-				if(banda._id) {
-					recursoBanda.update({bandaId: banda._id}, banda, function() {
+				if(banda.codigo) {
+					recursoBanda.update({bandaId: banda.codigo}, banda, function() {
 
 						$rootScope.$broadcast(evento);
 						resolve({

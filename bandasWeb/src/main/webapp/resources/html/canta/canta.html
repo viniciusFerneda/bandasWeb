@@ -20,7 +20,7 @@
 			<label>Banda</label>
 			<select name="banda" ng-model="canta.banda" class="form-control" 
 					required ng-controller="BandasController" 
-					ng-options="banda._id as (banda.nome | uppercase) for banda in bandas">
+					ng-options="banda.codigo as (banda.nome | uppercase) for banda in bandas">
 				<option value="">Escolha uma banda</option>
 			</select>
 			<span ng-show="formulario.$submitted && formulario.banda.$error.required" 
@@ -33,7 +33,7 @@
 			<label>Música</label>
 			<select name="musica" ng-model="canta.musica" class="form-control" 
 					required ng-controller="BandasController" 
-					ng-options="musica._id as (musica.nome | uppercase) for musica in musicas">
+					ng-options="musica.codigo as (musica.nome | uppercase) for musica in musicas">
 				<option value="">Escolha uma música</option>
 			</select>
 			<span ng-show="formulario.$submitted && formulario.musica.$error.required" 
@@ -46,7 +46,7 @@
 			<label>Gravadora</label>
 			<select name="gravadora" ng-model="canta.gravadora" class="form-control" 
 					required ng-controller="GravadorasController" 
-					ng-options="gravadora._id as (gravadora.nome | uppercase) for gravadora in gravadoras">
+					ng-options="gravadora.codigo as (gravadora.nome | uppercase) for gravadora in gravadoras">
 				<option value="">Escolha uma gravadora</option>
 			</select>
 			<span ng-show="formulario.$submitted && formulario.gravadora.$error.required" 
@@ -59,7 +59,7 @@
 			<label>Estilo</label>
 			<select name="estilo" ng-model="canta.estilo" class="form-control" 
 					required ng-controller="EstilosController" 
-					ng-options="estilo._id as (estilo.nome | uppercase) for estilo in estilos">
+					ng-options="estilo.codigo as (estilo.nome | uppercase) for estilo in estilos">
 				<option value="">Escolha um estilo</option>
 			</select>
 			<span ng-show="formulario.$submitted && formulario.estilo.$error.required" 

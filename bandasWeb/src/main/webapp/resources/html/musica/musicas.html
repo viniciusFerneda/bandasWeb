@@ -21,7 +21,7 @@
     <meu-painel class="col-md-2 painel-animado" ng-repeat="musica in musicas | filter: filtro" titulo="{{musica.nome}}">
         <minha-musica nome="{{musica.nome}}"></minha-musica>
 
-		<a class="btn btn-primary btn-block" href="/bandasWeb/musicas/edit/{{musica._id}}">
+		<a class="btn btn-primary btn-block" href="/bandasWeb/musicas/edit/{{musica.codigo}}">
 			Editar
 		</a>
 		

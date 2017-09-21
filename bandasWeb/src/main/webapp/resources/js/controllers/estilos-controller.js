@@ -11,7 +11,7 @@ angular.module("BandaApp").controller("EstilosController",function($scope, recur
 	});
 
 	$scope.remover = function(estilo) {
-		recursoEstilo.delete({estiloId: estilo._id}, function() {
+		recursoEstilo.delete({estiloId: estilo.codigo}, function() {
 			var indiceDoEstilo = $scope.estilos.indexOf(estilo);
 			$scope.estilos.splice(indiceDoEstilo, 1);
 			$scope.mensagem = 'Estilo ' + estilo.nome + ' removido com sucesso!';

@@ -11,7 +11,7 @@ angular.module("BandaApp").controller("CantasController",function($scope, recurs
 	});
 
 	$scope.remover = function(canta) {
-		recursoCanta.delete({cantaId: canta._id}, function() {
+		recursoCanta.delete({cantaId: canta.codigo}, function() {
 			var indiceDaCanta = $scope.cantas.indexOf(canta);
 			$scope.cantas.splice(indiceDaCanta, 1);
 			$scope.mensagem = 'Canta ' + canta.banda + ' removida com sucesso!';

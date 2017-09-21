@@ -9,7 +9,7 @@ angular.module('BandaApp')
 				$scope.pais = pais; 
 			}, function(erro) {
 				console.log(erro);
-				$scope.mensagem = 'Não foi possível obter a Banda'
+				$scope.mensagem = 'Não foi possível obter o País'
 			});
 		}
 

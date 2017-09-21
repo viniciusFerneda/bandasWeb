@@ -11,7 +11,7 @@ angular.module("BandaApp").controller("GravadorasController",function($scope, re
 	});
 
 	$scope.remover = function(gravadora) {
-		recursoGravadora.delete({gravadoraId: gravadora._id}, function() {
+		recursoGravadora.delete({gravadoraId: gravadora.codigo}, function() {
 			var indiceDaGravadora = $scope.gravadoras.indexOf(gravadora);
 			$scope.gravadoras.splice(indiceDaGravadora, 1);
 			$scope.mensagem = 'Gravadora ' + gravadora.nome + ' removida com sucesso!';
