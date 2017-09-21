@@ -3,6 +3,7 @@ package br.com.vinicius.banda.model;
 import java.util.Date;
 
 import br.com.vinicius.banda.dto.BandaDTO;
+import br.com.vinicius.banda.utils.DateUtils;
 
 public class Banda {
 
@@ -54,7 +55,7 @@ public class Banda {
 	}
 	
 	public BandaDTO toDTO() {
-		return new BandaDTO(this.codigo, this.nome, this.dtCriacao, this.pais.getNome());
+		return new BandaDTO(this.codigo, this.nome, DateUtils.formatData(this.dtCriacao, DateUtils.PATTERN_DATA_PADRAO), this.pais.getNome());
 	}
 
 }

@@ -1,20 +1,19 @@
 package br.com.vinicius.banda.dto;
 
-import java.util.Date;
-
 import br.com.vinicius.banda.model.Banda;
+import br.com.vinicius.banda.utils.DateUtils;
 
 public class BandaDTO {
 
 	private Integer codigo;
 	private String nome;
-	private Date dtCriacao;
+	private String dtCriacao;
 	private String pais;
 	
 	public BandaDTO() {
 	}
 
-	public BandaDTO(Integer codigo, String nome, Date dtCriacao, String pais) {
+	public BandaDTO(Integer codigo, String nome, String dtCriacao, String pais) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -38,11 +37,11 @@ public class BandaDTO {
 		this.nome = nome;
 	}
 
-	public Date getDtCriacao() {
+	public String getDtCriacao() {
 		return dtCriacao;
 	}
 
-	public void setDtCriacao(Date dtCriacao) {
+	public void setDtCriacao(String dtCriacao) {
 		this.dtCriacao = dtCriacao;
 	}
 
@@ -55,7 +54,7 @@ public class BandaDTO {
 	}
 	
 	public Banda toBanda() {
-		return new Banda(this.codigo, this.nome, this.dtCriacao, null);
+		return new Banda(this.codigo, this.nome, DateUtils.parseData(this.dtCriacao, DateUtils.PATTERN_DATA_PADRAO), null);
 	}
 	
 }

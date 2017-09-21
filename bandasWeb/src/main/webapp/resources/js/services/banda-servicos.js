@@ -15,10 +15,8 @@ angular.module('bandaServicos', ['ngResource'])
 
 		service.cadastrar = function(banda) {
 			return $q(function(resolve, reject) {
-
 				if(banda.codigo) {
-					recursoBanda.update({bandaId: banda.codigo}, banda, function() {
-
+					recursoBanda.update(banda, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
 							mensagem: 'Banda ' + banda.nome + ' atualizada com sucesso',
@@ -30,7 +28,6 @@ angular.module('bandaServicos', ['ngResource'])
 							mensagem: 'Não foi possível atualizar a banda ' + banda.nome
 						});
 					});
-
 				} else {
 					recursoBanda.save(banda, function() {
 						$rootScope.$broadcast(evento);

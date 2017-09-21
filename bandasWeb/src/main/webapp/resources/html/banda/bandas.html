@@ -19,8 +19,7 @@
 
 <div class="row">
     <meu-painel class="col-md-2 painel-animado" ng-repeat="banda in bandas | filter: filtro" titulo="{{banda.nome}}">
-        <minha-banda nome="{{banda.nome}}" dtCriacao="{{banda.dtCriacao}}" pais="{{banda.pais}}"></minha-banda>
-
+        <minha-banda dtcriacao="{{banda.dtCriacao}}" pais="{{banda.pais}}"></minha-banda>
 		<a class="btn btn-primary btn-block" href="/bandasWeb/bandas/edit/{{banda.codigo}}">
 			Editar
 		</a>

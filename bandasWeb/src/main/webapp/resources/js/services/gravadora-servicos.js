@@ -16,7 +16,7 @@ angular.module('gravadoraServicos', ['ngResource'])
 			return $q(function(resolve, reject) {
 
 				if(gravadora.codigo) {
-					recursoGravadora.update({gravadoraId: gravadora.codigo}, gravadora, function() {
+					recursoGravadora.update(gravadora, function() {
 
 						$rootScope.$broadcast(evento);
 						resolve({

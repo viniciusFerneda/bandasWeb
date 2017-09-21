@@ -15,10 +15,8 @@ angular.module('cantaServicos', ['ngResource'])
 
 		service.cadastrar = function(canta) {
 			return $q(function(resolve, reject) {
-
 				if(canta.codigo) {
-					recursoCanta.update({cantaId: canta.codigo}, canta, function() {
-
+					recursoCanta.update(canta, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
 							mensagem: 'Canta ' + canta.nome + ' atualizada com sucesso',
@@ -30,7 +28,6 @@ angular.module('cantaServicos', ['ngResource'])
 							mensagem: 'Não foi possível atualizar a canta ' + canta.nome
 						});
 					});
-
 				} else {
 					recursoCanta.save(canta, function() {
 						$rootScope.$broadcast(evento);

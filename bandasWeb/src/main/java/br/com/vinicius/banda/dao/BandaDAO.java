@@ -10,6 +10,7 @@ import java.util.List;
 
 import br.com.vinicius.banda.dto.BandaDTO;
 import br.com.vinicius.banda.model.Banda;
+import br.com.vinicius.banda.model.Pais;
 
 public class BandaDAO {
 
@@ -54,15 +55,20 @@ public class BandaDAO {
 	public List<BandaDTO> lista() throws SQLException {
 		List<BandaDTO> bandas = new ArrayList<>();
 
-		String sql = "SELECT * FROM BANDA";
+		String sql = "SELECT BAN.BAN_CODIGO, BAN.BAN_NOME, BAN.BAN_DT_CRIACAO, PAI.PAI_CODIGO, PAI.PAI_NOME"
+				+ " FROM BANDA BAN "
+				+ " INNER JOIN PAIS PAI ON (BAN.BAN_PAIS = PAI.PAI_CODIGO)";
+		
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					int id = rs.getInt("BAN_CODIGO");
-					String nome = rs.getString("BAN_NOME");
-					Date dtCriacao = rs.getDate("BAN_DT_CRIACAO");
-					BandaDTO banda = new Banda(id, nome, dtCriacao, null).toDTO();
+					int id = rs.getInt(1);
+					String nome = rs.getString(2);
+					Date dtCriacao = rs.getDate(3);
+					int codigoPais = rs.getInt(4);
+					String nomePais = rs.getString(5);
+					BandaDTO banda = new Banda(id, nome, dtCriacao, new Pais(codigoPais, nomePais)).toDTO();
 					bandas.add(banda);
 				}
 			}
@@ -73,16 +79,22 @@ public class BandaDAO {
 	public BandaDTO buscarBandaPorCodigo(int codigo) throws SQLException {
 		BandaDTO banda = new BandaDTO();
 
-		String sql = "SELECT * FROM BANDA WHERE BAN_CODIGO = ?";
+		String sql = "SELECT BAN.BAN_CODIGO, BAN.BAN_NOME, BAN.BAN_DT_CRIACAO, PAI.PAI_CODIGO, PAI.PAI_NOME " + 
+				" FROM BANDA BAN " + 
+				" INNER JOIN PAIS PAI ON (BAN.BAN_PAIS = PAI.PAI_CODIGO) "+
+				" WHERE BAN.BAN_CODIGO = ?";
+		
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setInt(1, codigo);
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					int id = rs.getInt("BAN_CODIGO");
-					String nome = rs.getString("BAN_NOME");
-					Date dtCriacao = rs.getDate("BAN_DT_CRIACAO");
-					banda = new Banda(id, nome, dtCriacao, null).toDTO();
+					int id = rs.getInt(1);
+					String nome = rs.getString(2);
+					Date dtCriacao = rs.getDate(3);
+					int codigoPais = rs.getInt(4);
+					String nomePais = rs.getString(5);
+					banda = new Banda(id, nome, dtCriacao, new Pais(codigoPais, nomePais)).toDTO();
 				}
 			}
 		}

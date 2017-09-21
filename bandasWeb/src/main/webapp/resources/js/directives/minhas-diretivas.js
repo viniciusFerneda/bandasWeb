@@ -21,8 +21,7 @@ angular.module('minhasDiretivas', [])
         ddo.restrict = "AE";
 
         ddo.scope = {
-            nome: '@',
-            dtCriacao: '@',
+        	dtcriacao: '@',
             pais: '@'
         };
 
@@ -37,6 +36,7 @@ angular.module('minhasDiretivas', [])
         ddo.restrict = "AE";
 
         ddo.scope = {
+        	codigo: '@',
             nome: '@'
         };
 

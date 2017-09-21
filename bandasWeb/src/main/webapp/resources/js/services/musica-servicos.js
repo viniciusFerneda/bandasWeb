@@ -15,10 +15,8 @@ angular.module('musicaServicos', ['ngResource'])
 
 		service.cadastrar = function(musica) {
 			return $q(function(resolve, reject) {
-
 				if(musica.codigo) {
-					recursoMusica.update({musicaId: musica.codigo}, musica, function() {
-
+					recursoMusica.update(musica, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
 							mensagem: 'Musica ' + musica.nome + ' atualizada com sucesso',
@@ -30,7 +28,6 @@ angular.module('musicaServicos', ['ngResource'])
 							mensagem: 'Não foi possível atualizar a musica ' + musica.nome
 						});
 					});
-
 				} else {
 					recursoMusica.save(musica, function() {
 						$rootScope.$broadcast(evento);

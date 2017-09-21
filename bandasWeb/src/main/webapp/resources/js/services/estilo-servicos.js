@@ -15,7 +15,7 @@ angular.module('estiloServicos', ['ngResource'])
 		service.cadastrar = function(estilo) {
 			return $q(function(resolve, reject) {
 				if(estilo.codigo) {
-					recursoEstilo.update({estiloId: estilo.codigo}, estilo, function() {
+					recursoEstilo.update(estilo, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
 							mensagem: 'Estilo ' + estilo.nome + ' atualizada com sucesso',

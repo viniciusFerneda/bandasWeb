@@ -20,7 +20,7 @@ angular.module('BandaApp', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResourc
 			controller: 'BandaController'
 		});
 
-		$routeProvider.when('/bandas/edit/:bandaId', {
+		$routeProvider.when('/bandasWeb/bandas/edit/:bandaId', {
 			templateUrl: '/bandasWeb/resources/html/banda/banda.html',
 			controller: 'BandaController'
 		});

@@ -19,7 +19,7 @@
 
 <div class="row">
     <meu-painel class="col-md-2 painel-animado" ng-repeat="estilo in estilos | filter: filtro" titulo="{{estilo.nome}}">
-        <meu-estilo nome="{{estilo.nome}}"></meu-estilo>
+        <meu-estilo codigo="{{estilo.codigo}}" nome="{{estilo.nome}}"></meu-estilo>
 
 		<a class="btn btn-primary btn-block" href="/bandasWeb/estilos/edit/{{estilo.codigo}}">
 			Editar
