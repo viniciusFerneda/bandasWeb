@@ -14,7 +14,7 @@ public class Canta {
 	public Canta() {
 	}
 
-	public Canta(int codigo, int anoGravacao, Banda banda, Musica musica, Gravadora gravadora, Estilo estilo) {
+	public Canta(Integer codigo, Integer anoGravacao, Banda banda, Musica musica, Gravadora gravadora, Estilo estilo) {
 		this.codigo = codigo;
 		this.anoGravacao = anoGravacao;
 		this.banda = banda;
