@@ -19,26 +19,26 @@ angular.module('cantaServicos', ['ngResource'])
 					recursoCanta.update(canta, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
-							mensagem: 'Canta ' + canta.nome + ' atualizada com sucesso',
+							mensagem: 'Canta ' + canta.musica + ' atualizada com sucesso',
 							inclusao: false
 						});
 					}, function(erro) {
 						console.log(erro);
 						reject({
-							mensagem: 'Não foi possível atualizar a canta ' + canta.nome
+							mensagem: 'Não foi possível atualizar a canta ' + canta.musica
 						});
 					});
 				} else {
 					recursoCanta.save(canta, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
-							mensagem: 'Canta ' + canta.nome + ' incluída com sucesso',
+							mensagem: 'Canta ' + canta.musica + ' incluída com sucesso',
 							inclusao: true
 						});
 					}, function(erro) {
 						console.log(erro);
 						reject({
-							mensagem: 'Não foi possível incluir a canta ' + canta.titulo
+							mensagem: 'Não foi possível incluir a canta ' + canta.musica
 						});
 					});
 				}

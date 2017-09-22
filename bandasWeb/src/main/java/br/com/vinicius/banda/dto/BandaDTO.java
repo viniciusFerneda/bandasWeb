@@ -1,6 +1,7 @@
 package br.com.vinicius.banda.dto;
 
 import br.com.vinicius.banda.model.Banda;
+import br.com.vinicius.banda.model.Pais;
 import br.com.vinicius.banda.utils.DateUtils;
 
 public class BandaDTO {
@@ -9,16 +10,18 @@ public class BandaDTO {
 	private String nome;
 	private String dtCriacao;
 	private String pais;
-	
+	private Integer codigoPais;
+
 	public BandaDTO() {
 	}
 
-	public BandaDTO(Integer codigo, String nome, String dtCriacao, String pais) {
+	public BandaDTO(Integer codigo, String nome, String dtCriacao, String pais, Integer codigoPais) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.dtCriacao = dtCriacao;
 		this.pais = pais;
+		this.codigoPais = codigoPais;
 	}
 
 	public Integer getCodigo() {
@@ -52,9 +55,18 @@ public class BandaDTO {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-	
-	public Banda toBanda() {
-		return new Banda(this.codigo, this.nome, DateUtils.parseData(this.dtCriacao, DateUtils.PATTERN_DATA_PADRAO), null);
+
+	public Integer getCodigoPais() {
+		return codigoPais;
 	}
-	
+
+	public void setCodigoPais(Integer codigoPais) {
+		this.codigoPais = codigoPais;
+	}
+
+	public Banda toBanda() {
+		return new Banda(this.codigo, this.nome, DateUtils.parseData(this.dtCriacao, DateUtils.PATTERN_DATA_PADRAO),
+				new Pais(this.codigoPais, this.pais));
+	}
+
 }

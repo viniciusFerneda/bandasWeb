@@ -70,9 +70,11 @@ public class Canta {
 	public void setEstilo(Estilo estilo) {
 		this.estilo = estilo;
 	}
-	
+
 	public CantaDTO toDTO() {
-		return new CantaDTO(this.codigo, this.anoGravacao, this.banda.getNome(), this.musica.getNome(), this.gravadora.getNome(), this.estilo.getNome());
+		return new CantaDTO(this.codigo, this.anoGravacao, this.banda.getNome(), this.banda.getCodigo(),
+				this.musica.getNome(), this.musica.getCodigo(), this.gravadora.getNome(), this.gravadora.getCodigo(),
+				this.estilo.getNome(), this.estilo.getCodigo());
 	}
 
 }

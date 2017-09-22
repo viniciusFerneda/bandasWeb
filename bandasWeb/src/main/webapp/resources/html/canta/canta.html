@@ -18,7 +18,7 @@
 
 		<div class="form-group">
 			<label>Banda</label>
-			<select name="banda" ng-model="canta.banda" class="form-control" 
+			<select name="banda" ng-model="canta.codigoBanda" class="form-control" 
 					required ng-controller="BandasController" 
 					ng-options="banda.codigo as (banda.nome | uppercase) for banda in bandas">
 				<option value="">Escolha uma banda</option>
@@ -31,8 +31,8 @@
 
 		<div class="form-group">
 			<label>Música</label>
-			<select name="musica" ng-model="canta.musica" class="form-control" 
-					required ng-controller="BandasController" 
+			<select name="musica" ng-model="canta.codigoMusica" class="form-control" 
+					required ng-controller="MusicasController" 
 					ng-options="musica.codigo as (musica.nome | uppercase) for musica in musicas">
 				<option value="">Escolha uma música</option>
 			</select>
@@ -44,7 +44,7 @@
 
 		<div class="form-group">
 			<label>Gravadora</label>
-			<select name="gravadora" ng-model="canta.gravadora" class="form-control" 
+			<select name="gravadora" ng-model="canta.codigoGravadora" class="form-control" 
 					required ng-controller="GravadorasController" 
 					ng-options="gravadora.codigo as (gravadora.nome | uppercase) for gravadora in gravadoras">
 				<option value="">Escolha uma gravadora</option>
@@ -57,7 +57,7 @@
 
 		<div class="form-group">
 			<label>Estilo</label>
-			<select name="estilo" ng-model="canta.estilo" class="form-control" 
+			<select name="estilo" ng-model="canta.codigoEstilo" class="form-control" 
 					required ng-controller="EstilosController" 
 					ng-options="estilo.codigo as (estilo.nome | uppercase) for estilo in estilos">
 				<option value="">Escolha um estilo</option>
@@ -75,8 +75,4 @@
 		<hr>
 	</div>
 	
-	<div class="col-md-6">
-		<minha-canta anoGravacao="{{canta.anoGravacao}}" banda="{{canta.banda}}" musica="{{canta.musica}}" gravadora="{{canta.gravadora}}" estilo="{{canta.estilo}}"></minha-canta>
-	</div>
-
 </form>

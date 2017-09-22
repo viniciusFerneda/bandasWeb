@@ -66,7 +66,7 @@ angular.module('minhasDiretivas', [])
         ddo.restrict = "AE";
 
         ddo.scope = {
-        	anoGravacao: '@',
+        	anogravacao: '@',
         	banda: '@',
         	musica: '@',
         	gravadora: '@',
@@ -84,7 +84,6 @@ angular.module('minhasDiretivas', [])
         ddo.restrict = "AE";
 
         ddo.scope = {
-        	nome: '@',
         	pais: '@'
         };
 
@@ -99,7 +98,6 @@ angular.module('minhasDiretivas', [])
         ddo.restrict = "AE";
 
         ddo.scope = {
-        	nome: '@',
         	duracao: '@'
         };
 

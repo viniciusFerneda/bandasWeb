@@ -31,7 +31,7 @@
 
 		<div class="form-group">
 			<label>País</label>
-			<select name="pais" ng-model="banda.pais" class="form-control" 
+			<select name="pais" ng-model="banda.codigoPais" class="form-control" 
 					required ng-controller="PaisesController" 
 					ng-options="pais.codigo as (pais.nome | uppercase) for pais in paises">
 				<option value="">Escolha um país</option>
@@ -47,8 +47,5 @@
 		</button>
 		<a href="/bandasWeb/bandas" meu-focus class="btn btn-primary">Voltar</a>
 		<hr>
-	</div>
-	<div class="col-md-6">
-		<minha-banda nome="{{banda.nome}}" dtCriacao="{{banda.dtCriacao}}" pais="{{banda.pais}}"></minha-banda>
 	</div>
 </form>

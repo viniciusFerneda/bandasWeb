@@ -22,6 +22,10 @@ public class Banda {
 		this.pais = pais;
 	}
 
+	public Banda(Integer codigo) {
+		this.codigo = codigo;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -55,7 +59,7 @@ public class Banda {
 	}
 	
 	public BandaDTO toDTO() {
-		return new BandaDTO(this.codigo, this.nome, DateUtils.formatData(this.dtCriacao, DateUtils.PATTERN_DATA_PADRAO), this.pais.getNome());
+		return new BandaDTO(this.codigo, this.nome, DateUtils.formatData(this.dtCriacao, DateUtils.PATTERN_DATA_PADRAO), this.pais.getNome(), this.pais.getCodigo());
 	}
 
 }

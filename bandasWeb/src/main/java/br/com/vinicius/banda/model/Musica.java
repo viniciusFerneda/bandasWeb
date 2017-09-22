@@ -18,6 +18,10 @@ public class Musica {
 		this.duracao = duracao;
 	}
 
+	public Musica(Integer codigo) {
+		this.codigo = codigo;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}

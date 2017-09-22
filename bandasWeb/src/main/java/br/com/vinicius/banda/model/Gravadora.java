@@ -18,6 +18,10 @@ public class Gravadora {
 		this.pais = pais;
 	}
 
+	public Gravadora(Integer codigo) {
+		this.codigo = codigo;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -43,6 +47,7 @@ public class Gravadora {
 	}
 
 	public GravadoraDTO toDTO() {
-		return new GravadoraDTO(this.codigo, this.nome, this.pais.getNome());
+		return new GravadoraDTO(this.codigo, this.nome, this.pais.getNome(), this.pais.getCodigo());
 	}
+
 }

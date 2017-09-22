@@ -59,7 +59,7 @@ angular.module('BandaApp', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResourc
 
 		//Cadastro de Gravadora
 		$routeProvider.when('/bandasWeb/gravadoras', {
-			templateUrl: '/bandasWeb/resources/html/gravadora/estilos.html',
+			templateUrl: '/bandasWeb/resources/html/gravadora/gravadoras.html',
 			controller: 'GravadorasController'
 		});
 

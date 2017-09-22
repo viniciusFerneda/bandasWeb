@@ -22,7 +22,7 @@
 
 		<div class="form-group">
 			<label>País</label>
-			<select name="pais" ng-model="gravadora.pais" class="form-control" 
+			<select name="pais" ng-model="gravadora.codigoPais" class="form-control" 
 					required ng-controller="PaisesController" 
 					ng-options="pais.codigo as (pais.nome | uppercase) for pais in paises">
 				<option value="">Escolha um país</option>
@@ -40,8 +40,4 @@
 		<hr>
 	</div>
 	
-	<div class="col-md-6">
-		<minha-gravadora nome="{{gravadora.nome}}" pais="{{gravadora.pais}}"></minha-gravadora>
-	</div>
-
 </form>

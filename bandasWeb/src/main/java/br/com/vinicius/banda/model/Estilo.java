@@ -9,11 +9,16 @@ public class Estilo {
 
 	public Estilo() {
 	}
-
+	
 	public Estilo(Integer codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
+	}
+
+	public Estilo(Integer codigo) {
+		super();
+		this.codigo = codigo;
 	}
 
 	public Integer getCodigo() {

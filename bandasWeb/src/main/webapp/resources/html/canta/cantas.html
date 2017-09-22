@@ -20,7 +20,7 @@
 <div class="row">
     <meu-painel class="col-md-2 painel-animado" ng-repeat="canta in cantas | filter: filtro" titulo="{{canta.musica}}">
         
-        <minha-canta anoGravacao="{{canta.anoGravacao}}" banda="{{canta.banda}}" musica="{{canta.musica}}" gravadora="{{canta.gravadora}}" estilo="{{canta.estilo}}"></minha-canta>
+        <minha-canta anogravacao="{{canta.anoGravacao}}" banda="{{canta.banda}}" musica="{{canta.musica}}" gravadora="{{canta.gravadora}}" estilo="{{canta.estilo}}"></minha-canta>
 
 		<a class="btn btn-primary btn-block" href="/bandasWeb/cantas/edit/{{canta.codigo}}">
 			Editar
